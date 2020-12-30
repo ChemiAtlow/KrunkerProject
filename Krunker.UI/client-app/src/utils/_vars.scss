@@ -1,0 +1,34 @@
+$primary: #03045e;
+$secondary: #90e0ef;
+$primaryLight: #023e8a;
+$primaryLight2: #0077b6;
+$gray: #d8dae5;
+$lightGray: #b6b6b6;
+$error: #bb0000;
+$good: #008b00;
+$light: #bff0fa;
+$dark: #000030;
+$shadowGray: rgba(
+	$color: $dark,
+	$alpha: 0.6,
+);
+$grayBg: #ddd;
+
+$buttonBG: linear-gradient(224.46deg, $primaryLight, $primaryLight2);
+
+$pagePadding: 0.2rem;
+$barHeight: 3.5rem;
+
+$modalPadding: 1.5rem;
+$modalRadius: 0.15rem;
+$modalSectionHeight: 4.5rem;
+
+$toggleHeight: 2rem;
+$toggleWidth: 3.0625rem;
+$toggleBubbleWidth: 1.75rem;
+$togglePadding: 0 0.1rem;
+$toggleRadius: 1.25rem;
+$toggleIcons: 1.4rem;
+$toggleTransition: all 350ms ease-out;
+
+$toastRadius: 0.35rem;
