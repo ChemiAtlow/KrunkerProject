@@ -33,6 +33,7 @@ export default defineComponent({
         flex-direction: column;
         justify-content: center;
         max-width: 35rem;
+        max-height: 35rem;
         background: $lightGray;
         border-radius: 50%;
         box-shadow: 0 0 0.8rem $shadowGray;
