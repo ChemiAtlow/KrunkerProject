@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 const execa = require("execa");
+const del = require("del");
 const fs = require("fs").promises;
 (async () => {
 	try {
@@ -19,9 +20,7 @@ const fs = require("fs").promises;
 		]);
 		console.log("Pushing to gh-pages...");
 		await execa("git", ["push", "origin", "HEAD:gh-pages", "--force"]);
-		await fs.rmdir(`${folderName}/js`);
-		await fs.rmdir(`${folderName}/css`);
-		await fs.rmdir(folderName);
+		await del(folderName);
 		await execa("git", ["checkout", "-f", "master"]);
 		await execa("git", ["branch", "-D", "gh-pages"]);
 		console.log("Successfully deployed, check your settings");

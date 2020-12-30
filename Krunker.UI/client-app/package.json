@@ -29,6 +29,7 @@
 		"sass": "^1.26.5",
 		"sass-loader": "^10.1.0",
 		"typescript": "~3.9.3",
-		"execa": "latest"
+		"execa": "latest",
+		"del": "latest"
 	}
 }
