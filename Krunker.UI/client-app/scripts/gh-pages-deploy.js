@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 const execa = require("execa");
-const fs = require("fs");
+const fs = require("fs").promises;
 (async () => {
 	try {
 		await execa("git", ["checkout", "--orphan", "gh-pages"]);
@@ -8,7 +8,7 @@ const fs = require("fs");
 		console.log("Building started...");
 		await execa("npm", ["run", "build"]);
 		// Understand if it's dist or build folder
-		const folderName = fs.existsSync("./dist") ? "dist" : "build";
+		const folderName = "dist";
 		await execa("git", ["--work-tree", folderName, "add", "--all"]);
 		await execa("git", [
 			"--work-tree",
@@ -19,12 +19,7 @@ const fs = require("fs");
 		]);
 		console.log("Pushing to gh-pages...");
 		await execa("git", ["push", "origin", "HEAD:gh-pages", "--force"]);
-		try {
-			await execa("rm", ["-r", folderName]);
-		} catch (e) {
-			console.warn("rm failed, attempting del");
-			await execa("del", ["-r", folderName]);
-		}
+		await fs.rm(folderName, { force: true, recursive: true });
 		await execa("git", ["checkout", "-f", "master"]);
 		await execa("git", ["branch", "-D", "gh-pages"]);
 		console.log("Successfully deployed, check your settings");
